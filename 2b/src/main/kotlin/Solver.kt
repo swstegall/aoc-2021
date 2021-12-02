@@ -22,16 +22,18 @@ class Solver {
   fun traverse(vectors: List<Pair<String, Int>>) {
     var down = 0
     var forward = 0
+    var aim = 0
     for (vector in vectors) {
       when {
         vector.first == "forward" -> {
           forward += vector.second
+          down += aim * vector.second
         }
         vector.first == "down" -> {
-          down += vector.second
+          aim += vector.second
         }
         vector.first == "up" -> {
-          down -= vector.second
+          aim -= vector.second
         }
       }
     }
